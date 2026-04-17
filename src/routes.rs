@@ -1,6 +1,7 @@
 use axum::{routing::get, Router};
 use sqlx::PgPool;
 use std::sync::Arc;
+use tower_http::services::ServeDir;
 
 use crate::handlers::{
     checks::{handle_get_uptime, handle_list_checks},
@@ -27,4 +28,5 @@ pub fn build_router(pool: Arc<PgPool>) -> Router {
         .route("/api/incidents/active", get(handle_list_active_incidents))
         .route("/api/stats", get(handle_get_stats))
         .with_state(pool)
+        .fallback_service(ServeDir::new("static"))
 }

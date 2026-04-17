@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" fill="none">
+  <!-- Legs -->
+  <line x1="28" y1="62" x2="12" y2="78" stroke="#c94a00" stroke-width="4" stroke-linecap="round"/>
+  <line x1="40" y1="66" x2="30" y2="82" stroke="#c94a00" stroke-width="4" stroke-linecap="round"/>
+  <line x1="80" y1="66" x2="90" y2="82" stroke="#c94a00" stroke-width="4" stroke-linecap="round"/>
+  <line x1="92" y1="62" x2="108" y2="78" stroke="#c94a00" stroke-width="4" stroke-linecap="round"/>
+  <!-- Left claw (lowered) -->
+  <line x1="22" y1="52" x2="10" y2="58" stroke="#c94a00" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="6" cy="62" r="10" fill="#f74c00" stroke="#c94a00" stroke-width="2"/>
+  <circle cx="14" cy="68" r="7" fill="#f74c00" stroke="#c94a00" stroke-width="2"/>
+  <!-- Right claw (raised, holding magnifier) -->
+  <line x1="98" y1="48" x2="110" y2="32" stroke="#c94a00" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="112" cy="26" r="10" fill="#f74c00" stroke="#c94a00" stroke-width="2"/>
+  <circle cx="104" cy="20" r="7" fill="#f74c00" stroke="#c94a00" stroke-width="2"/>
+  <!-- Magnifying glass -->
+  <circle cx="112" cy="14" r="7" stroke="#ffd700" stroke-width="2.5" fill="none"/>
+  <line x1="117" y1="19" x2="122" y2="24" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Body -->
+  <ellipse cx="60" cy="56" rx="36" ry="24" fill="#f74c00" stroke="#c94a00" stroke-width="2"/>
+  <!-- Shell texture -->
+  <ellipse cx="60" cy="52" rx="24" ry="14" fill="#e04400" opacity="0.4"/>
+  <!-- Eye stalks -->
+  <line x1="46" y1="36" x2="42" y2="26" stroke="#c94a00" stroke-width="3" stroke-linecap="round"/>
+  <line x1="74" y1="36" x2="78" y2="26" stroke="#c94a00" stroke-width="3" stroke-linecap="round"/>
+  <!-- Eyes (focused / looking up-right) -->
+  <circle cx="41" cy="23" r="8" fill="white" stroke="#c94a00" stroke-width="1.5"/>
+  <circle cx="79" cy="23" r="8" fill="white" stroke="#c94a00" stroke-width="1.5"/>
+  <circle cx="44" cy="21" r="4" fill="#1a1a2e"/>
+  <circle cx="82" cy="21" r="4" fill="#1a1a2e"/>
+  <circle cx="45" cy="20" r="1.5" fill="white"/>
+  <circle cx="83" cy="20" r="1.5" fill="white"/>
+  <!-- Neutral / curious mouth -->
+  <path d="M 48 68 Q 60 72 72 68" stroke="#c94a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

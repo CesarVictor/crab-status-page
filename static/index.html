@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crab Status Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-title">
+        <img src="/img/ferris-happy.svg" alt="Ferris" class="header-ferris" id="header-ferris">
+        <h1>Crab Status Page</h1>
+      </div>
+      <div class="header-refresh">
+        <span class="refresh-label">auto-refresh in <span id="refresh-countdown">30</span>s</span>
+        <button class="btn btn-ghost" id="refresh-btn">↻ Refresh</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Stats bar -->
+    <section class="stats-bar" id="stats-bar">
+      <div class="stat-card">
+        <div class="stat-value" id="stat-services">—</div>
+        <div class="stat-label">Services</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-uptime">—</div>
+        <div class="stat-label">Avg uptime 24h</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-checks">—</div>
+        <div class="stat-label">Checks today</div>
+      </div>
+    </section>
+
+    <!-- System status banner -->
+    <div class="status-banner" id="status-banner"></div>
+
+    <!-- Active incidents -->
+    <section class="incidents-section" id="incidents-section" style="display:none">
+      <h2 class="section-title">🚨 Active Incidents</h2>
+      <div id="incidents-list"></div>
+    </section>
+
+    <!-- Add service form -->
+    <section class="add-section">
+      <button class="btn btn-secondary toggle-form-btn" id="toggle-form-btn">+ Add service</button>
+      <form class="add-form" id="add-form" style="display:none">
+        <div class="form-row">
+          <input class="form-input" type="text" id="form-name" placeholder="Service name" required>
+          <input class="form-input" type="url" id="form-url" placeholder="https://example.com" required>
+          <select class="form-input" id="form-interval">
+            <option value="30">Every 30s</option>
+            <option value="60" selected>Every 1m</option>
+            <option value="300">Every 5m</option>
+            <option value="900">Every 15m</option>
+            <option value="1800">Every 30m</option>
+            <option value="3600">Every 1h</option>
+          </select>
+          <input class="form-input form-input--short" type="number" id="form-status" value="200" min="100" max="599" placeholder="Expected status">
+          <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+        <p class="form-error" id="form-error" style="display:none"></p>
+      </form>
+    </section>
+
+    <!-- Services grid -->
+    <section class="services-section">
+      <div class="services-grid" id="services-grid">
+        <div class="loading-state" id="loading-state">
+          <img src="/img/ferris-checking.svg" alt="Loading..." class="loading-ferris">
+          <p>Checking services…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Built with Rust 🦀 + Axum + Neon PostgreSQL</span>
+  </footer>
+
+  <script src="/js/ferris.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
