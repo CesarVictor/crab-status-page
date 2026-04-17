@@ -1,0 +1,62 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT s.id, s.name, s.url, s.check_interval_seconds, s.expected_status_code,\n                  s.is_active, s.created_at, s.updated_at\n           FROM services s\n           WHERE s.is_active = true\n           AND (\n               NOT EXISTS (SELECT 1 FROM health_checks hc WHERE hc.service_id = s.id)\n               OR (\n                   SELECT MAX(hc2.checked_at) FROM health_checks hc2 WHERE hc2.service_id = s.id\n               ) < now() - make_interval(secs => s.check_interval_seconds)\n           )",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "url",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 3,
+        "name": "check_interval_seconds",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 4,
+        "name": "expected_status_code",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 5,
+        "name": "is_active",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 6,
+        "name": "created_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 7,
+        "name": "updated_at",
+        "type_info": "Timestamptz"
+      }
+    ],
+    "parameters": {
+      "Left": []
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "5d971965eb520397d66d8f70b1c283aa0c5fc7112bb6f4e2b0c5a3703fbf8e55"
+}
