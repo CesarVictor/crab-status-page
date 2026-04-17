@@ -75,7 +75,7 @@ jobs:
             --add-cloudsql-instances=${{ env.CLOUDSQL_INSTANCE }} \
             --min-instances=1 \
             --max-instances=1 \
-            --memory=256Mi \
+            --memory=512Mi \
             --cpu=1 \
             --no-cpu-throttling \
             --allow-unauthenticated \
