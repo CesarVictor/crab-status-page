@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crab-status-page
+  labels:
+    app: crab-status-page
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crab-status-page
+  template:
+    metadata:
+      labels:
+        app: crab-status-page
+    spec:
+      containers:
+        - name: crab-status-page
+          image: europe-west3-docker.pkg.dev/j11-exo6/crab-status-page/crab-status-page:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+            - name: RUST_LOG
+              value: "info"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: crab-status-page-secrets
+                  key: database-url
+          readinessProbe:
+            httpGet:
+              path: /api/stats
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/stats
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
